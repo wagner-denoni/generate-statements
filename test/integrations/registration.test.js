@@ -49,7 +49,7 @@ suite('[test][User]', () => {
         const lastName = faker.name.lastName(); 
         let response = await request(app).post('/api/users/signup').send({email: email, password: password, name: lastName, surname: firstName}).set('Accept', 'application/json');
         expect(response.status).to.equal(200);
-        const user = response.body;
+        const {user} = response.body;
         expect(user.email).to.equal(email);
         expect(user.password).to.equal(password);
         expect(user.name).to.equal(lastName);
